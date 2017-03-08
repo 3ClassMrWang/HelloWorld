@@ -13,12 +13,6 @@ public class IMMergeSort extends MergeSort {
     private static final int N = 15;
 
     @Override
-    void sort(@NotNull Comparable[] a) {
-        init(a.length);
-        sort(a, 0, a.length - 1);
-    }
-
-    @Override
     void sort(Comparable[] a, int lo, int hi) {
         //To decrease time when array have a few items
         if (lo >= hi - N) {

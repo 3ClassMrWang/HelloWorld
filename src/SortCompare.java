@@ -12,7 +12,7 @@ import edu.princeton.cs.algs4.Stopwatch;
  * @author wangchuanjun
  */
 public class SortCompare {
-    private static final int N = 500000;
+    private static final int N = 5000000;
     private Comparable[] array = null;
 
     private void randomNumber() {
@@ -40,7 +40,7 @@ public class SortCompare {
         sort.sort(array);
         double processTime = timer.elapsedTime();
         StdOut.println("Array is sorted : " + Sort.isSorted(array));
-        Sort.show(array);
+//        Sort.show(array);
         return processTime;
     }
 }
