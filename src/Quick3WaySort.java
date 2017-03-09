@@ -1,6 +1,3 @@
-/**
- * Created by Administrator on 2017/3/9.
- */
 public class Quick3WaySort extends QuickSort {
     @Override
     void sort(Comparable[] a, int lo, int hi) {

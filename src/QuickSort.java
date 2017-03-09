@@ -1,8 +1,4 @@
 /**
- * Created by Administrator on 2017/3/8.
- */
-
-/**
  * Quick sort, no increase.
  *
  * @author wangchuanjun

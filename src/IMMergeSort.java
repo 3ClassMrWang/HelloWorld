@@ -1,7 +1,3 @@
-/**
- * Created by Administrator on 2017/3/7.
- */
-
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -13,7 +9,7 @@ public class IMMergeSort extends MergeSort {
     private static final int N = 15;
 
     @Override
-    void sort(Comparable[] a, int lo, int hi) {
+    void sort(@NotNull Comparable[] a, int lo, int hi) {
         //To decrease time when array have a few items
         if (lo >= hi - N) {
             selectionSort(a, lo, hi);
@@ -26,7 +22,7 @@ public class IMMergeSort extends MergeSort {
             merge(a, lo, mid, hi);
     }
 
-    private void selectionSort(Comparable[] a, int lo, int hi) {
+    private void selectionSort(@NotNull Comparable[] a, int lo, int hi) {
         for (int i = lo; i <= hi; i++) {
             int minIndex = i;
             for (int j = i + 1; j <= hi; j++)

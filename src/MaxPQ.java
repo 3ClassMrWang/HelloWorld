@@ -26,6 +26,7 @@ public class MaxPQ<T extends Comparable<T>> {
 
     public T delMax() {
 
+        return pq[1];
     }
 
     /**

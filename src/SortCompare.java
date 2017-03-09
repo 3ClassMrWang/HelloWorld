@@ -1,6 +1,3 @@
-/**
- * Created by wcjzj on 2017/3/7.
- */
 
 import edu.princeton.cs.algs4.StdOut;
 import edu.princeton.cs.algs4.StdRandom;
@@ -11,7 +8,7 @@ import edu.princeton.cs.algs4.Stopwatch;
  *
  * @author wangchuanjun
  */
-public class SortCompare {
+class SortCompare {
     private static final int N = 5000000;
     private Comparable[] array = null;
 
@@ -22,7 +19,7 @@ public class SortCompare {
     }
 
 
-    public double time(String func) {
+    double time(String func) {
         randomNumber();
         Stopwatch timer = new Stopwatch();
         Class<?> c = null;

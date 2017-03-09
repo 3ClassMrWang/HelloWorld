@@ -1,9 +1,6 @@
 import edu.princeton.cs.algs4.StdOut;
 import org.jetbrains.annotations.NotNull;
 
-/**
- * Created by wcjzj on 2017/3/7.
- */
 abstract public class Sort {
     abstract void sort(Comparable[] a);
 

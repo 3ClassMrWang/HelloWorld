@@ -1,7 +1,3 @@
-/**
- * Created by wcjzj on 2017/3/7.
- */
-
 import org.jetbrains.annotations.NotNull;
 
 /**
