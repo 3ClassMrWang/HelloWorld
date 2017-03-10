@@ -1,3 +1,6 @@
+import edu.princeton.cs.algs4.StdOut;
+import edu.princeton.cs.algs4.StdRandom;
+
 /**
  * Heap-based priority queue
  *
@@ -21,19 +24,36 @@ public class MaxPQ<T extends Comparable<T>> {
     }
 
     public void insert(T v) {
-
+        pq[++length] = v;
+        swim(length);
+//        recuSwim(length);
     }
 
     public T delMax() {
+        T max = pq[1];
+        exch(1, length--);
+        pq[length + 1] = null;
+        sink(1);
+//        recuSink(1);
+        return max;
+    }
 
-        return pq[1];
+    public static void main(String[] args) {
+        int N = 1000;
+
+        MaxPQ queue = new MaxPQ(N);
+        for (int i = 0; i < N; i++)
+            queue.insert(StdRandom.uniform(1000));
+
+        for (int i = 0; i < N; i++)
+            StdOut.println("DelMax: " + queue.delMax());
     }
 
     /**
      * Function for compare two <see>Comparable</see> object.
      *
-     * @param i
-     * @param j
+     * @param i i
+     * @param j j
      * @return true, i < j
      * false, i >= j
      */
@@ -44,8 +64,8 @@ public class MaxPQ<T extends Comparable<T>> {
     /**
      * Function for exchange two Comparable object.
      *
-     * @param i
-     * @param j
+     * @param i i
+     * @param j j
      */
     private void exch(int i, int j) {
         T temp = pq[i];
@@ -56,7 +76,7 @@ public class MaxPQ<T extends Comparable<T>> {
     /**
      * Swim one item from bottom.
      *
-     * @param k
+     * @param k Location of object
      */
     private void swim(int k) {
         while (k > 1 && less(k / 2, k)) {
@@ -65,7 +85,53 @@ public class MaxPQ<T extends Comparable<T>> {
         }
     }
 
-    private void sink(int k) {
+    /**
+     * Recursive version of <code>swim</code>
+     *
+     * @param k Location of object
+     */
+    private void recuSwim(int k) {
+        if (k <= 1 || pq[k].compareTo(pq[k / 2]) <= 0)
+            return;
 
+        exch(k, k / 2);
+        recuSwim(k / 2);
+    }
+
+    /**
+     * Sink one item from top.
+     *
+     * @param k Location of object
+     */
+    private void sink(int k) {
+        while (2 * k <= length) {
+            int j = 2 * k;
+            if (j < length && less(j, j + 1)) j++;
+            if (!less(k, j)) break;
+            exch(k, j);
+            k = j;
+        }
+    }
+
+    /**
+     * Recursive version of <code>sink</code>
+     *
+     * @param k Location of object
+     */
+    private void recuSink(int k) {
+        if (2 * k > length)
+            return;
+
+        if (2 * k == length && !less(k, 2 * k))
+            return;
+
+        int j = 2 * k;
+        if (2 * k + 1 <= length) {
+            if (less(j, j + 1)) j++;
+            if (!less(k, j)) return;
+        }
+
+        exch(k, j);
+        recuSink(j);
     }
 }
